@@ -1,0 +1,12 @@
+<h1 class="text-center">Countries around the world 🌍</h1>
+
+<div class="text-center">
+  <% @countries.each do |country| %>
+    <div class="mx-3 border px-3 py-2">
+      <%= link_to country.name, country_path(country), style: "color: blue, width: fit-content" %>
+      <%= link_to "Remove", country_path(country), method: :delete, data: { confirm: "Are you sure? "}, class: "btn btn-danger" %>
+    </div>
+  <% end %>
+</div>
+
+<%= link_to "Add a Country", new_country_path, class: "btn btn-primary" %>

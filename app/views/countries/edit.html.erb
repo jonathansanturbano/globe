@@ -1,0 +1,7 @@
+<h1>Edit <%= @country.name %></h1>
+<%= simple_form_for(@country) do |f| %>
+  <%= f.input :name %>
+  <%= f.input :continent %>
+  <%= f.input :population %>
+  <%= f.submit class: "btn btn-primary btn-large" %>
+<% end %>

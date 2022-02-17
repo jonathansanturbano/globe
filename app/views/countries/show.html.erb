@@ -1,0 +1,30 @@
+<div class="text-center">
+  <h1><%= @country.name %></h1>
+  <p class="font-italic" style="font-style: italic"><%= @country.name %> is a country in <%= @country.continent %> with <%= @country.population %> people. Come visit!</p>
+</div>
+
+<div class="row justify-content-center">
+  <% @country.cities.each do |city| %>
+    <div class="col-4">
+      <div class="card-trip mx-2">
+        <img src="<%= city.image_url %>" />
+        <div class="card-trip-infos">
+          <div>
+            <h4><%= city.name %></h4>
+          </div>
+          <%= link_to "Remove", city_path(city), method: :delete, data: {confirm: "Are you sure?"} %>
+        </div>
+      </div>
+    </div>
+  <% end %>
+</div>
+
+<%= link_to "Modify country", edit_country_path(@country), class: "btn btn-primary" %>
+<%= link_to "Back to countries", countries_path, class: "btn btn-primary" %>
+
+<h1>Add a city</h1>
+<%= simple_form_for [@country, @city] do |f| %>
+  <%= f.input :name %>
+  <%= f.input :image_url %>
+  <%= f.submit class: "btn btn-primary" %>
+<% end %>
